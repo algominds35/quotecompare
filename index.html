@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuoteCompare - Stop Wasting Hours Comparing Vendor Quotes</title>
+    <meta name="description" content="Upload quotes in any format. Get standardized comparison table in seconds. Join the beta waitlist for procurement professionals.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-pattern {
+            background-color: #2563eb;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    
+    <!-- Hero Section -->
+    <section class="hero-pattern text-white py-20 md:py-32">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    Stop Wasting Hours<br>Comparing Vendor Quotes
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto">
+                    Upload quotes in any format. Get standardized comparison table in seconds.
+                </p>
+                
+                <!-- Hero Email Form -->
+                <form id="heroForm" class="max-w-md mx-auto mb-12">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input 
+                            type="email" 
+                            id="heroEmail"
+                            placeholder="Enter your work email" 
+                            required
+                            class="flex-1 px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        >
+                            Join Beta Waitlist
+                        </button>
+                    </div>
+                    <p id="heroMessage" class="mt-3 text-sm text-blue-100"></p>
+                </form>
+                
+                <!-- Mockup Placeholder -->
+                <div class="mt-12 mx-auto max-w-4xl">
+                    <div class="bg-white rounded-lg shadow-2xl p-8 text-gray-800">
+                        <div class="aspect-video bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg flex items-center justify-center border-2 border-blue-200">
+                            <div class="text-center">
+                                <svg class="w-24 h-24 mx-auto text-blue-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                                <p class="text-blue-600 font-medium">Product Demo Screenshot</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Procurement Nightmare</h2>
+                <p class="text-xl text-gray-600">Sound familiar?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pain Point 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Inconsistent Formats</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Every vendor sends quotes in different formats (PDF, Excel, email)
+                    </p>
+                </div>
+                
+                <!-- Pain Point 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Massive Time Waste</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        You waste 10+ hours/week manually re-typing into spreadsheets
+                    </p>
+                </div>
+                
+                <!-- Pain Point 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Hidden Costs</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Hidden fees buried across different quote formats
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How QuoteCompare Works</h2>
+                <p class="text-xl text-gray-600">Three simple steps to save hours of work</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-start mb-12 gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                        1
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold mb-3">Upload your vendor quotes (any format)</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Drag and drop PDFs, Excel files, Word docs, or even email screenshots. Our AI handles them all.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row items-start mb-12 gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                        2
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold mb-3">AI extracts pricing, specs, and fees</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Advanced AI reads through each quote, identifying all costs, specifications, and terms automatically.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                        3
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold mb-3">Get clean comparison table ready to export</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">
+                            Instantly see all quotes side-by-side in a standardized format. Export to Excel or PDF with one click.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Procurement Teams Love It</h2>
+                <p class="text-xl text-gray-600">Real results for busy professionals</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Save 10+ hours per week</h3>
+                    <p class="text-gray-600">
+                        Get back your valuable time for strategic work
+                    </p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Eliminate manual data entry</h3>
+                    <p class="text-gray-600">
+                        No more tedious copy-paste work
+                    </p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Catch hidden fees automatically</h3>
+                    <p class="text-gray-600">
+                        Never miss a cost buried in fine print
+                    </p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Export to Excel or PDF instantly</h3>
+                    <p class="text-gray-600">
+                        Share with stakeholders in any format
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-2xl p-12 text-white text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Quote Comparison Process?</h2>
+                <p class="text-xl text-blue-100 mb-10">Join procurement teams already saving hours every week</p>
+                
+                <!-- Final CTA Form -->
+                <form id="finalForm" class="max-w-md mx-auto">
+                    <div class="space-y-4">
+                        <input 
+                            type="text" 
+                            id="finalName"
+                            placeholder="Your name" 
+                            required
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                        >
+                        <input 
+                            type="email" 
+                            id="finalEmail"
+                            placeholder="Your work email" 
+                            required
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                        >
+                        <input 
+                            type="text" 
+                            id="finalCompany"
+                            placeholder="Company name" 
+                            required
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                        >
+                        <button 
+                            type="submit"
+                            class="w-full bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        >
+                            Get Early Access
+                        </button>
+                    </div>
+                    <p id="finalMessage" class="mt-4 text-sm text-blue-100"></p>
+                </form>
+                
+                <p class="mt-8 text-blue-200 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                    </svg>
+                    Join 50+ procurement teams on the waitlist
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6 max-w-6xl text-center">
+            <p class="text-lg font-semibold text-white mb-2">QuoteCompare</p>
+            <p class="text-sm">Simplifying procurement, one quote at a time.</p>
+            <p class="text-xs mt-6">&copy; 2026 QuoteCompare. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Form Handling -->
+    <script>
+        // Hero Form Handler
+        document.getElementById('heroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('heroEmail').value;
+            const messageEl = document.getElementById('heroMessage');
+            
+            // Simulate submission
+            messageEl.textContent = '✓ Thanks! You\'re on the waitlist. Check your email.';
+            messageEl.className = 'mt-3 text-sm text-green-300 font-semibold';
+            
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('heroEmail').value = '';
+            }, 1500);
+            
+            // Log for demo purposes (in production, send to backend)
+            console.log('Hero form submitted:', { email });
+        });
+
+        // Final Form Handler
+        document.getElementById('finalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('finalName').value;
+            const email = document.getElementById('finalEmail').value;
+            const company = document.getElementById('finalCompany').value;
+            const messageEl = document.getElementById('finalMessage');
+            
+            // Simulate submission
+            messageEl.textContent = '✓ Welcome aboard, ' + name + '! Check your email for next steps.';
+            messageEl.className = 'mt-4 text-sm text-green-300 font-semibold';
+            
+            // Reset form
+            setTimeout(() => {
+                document.getElementById('finalName').value = '';
+                document.getElementById('finalEmail').value = '';
+                document.getElementById('finalCompany').value = '';
+            }, 2000);
+            
+            // Log for demo purposes (in production, send to backend)
+            console.log('Final form submitted:', { name, email, company });
+        });
+
+        // Smooth scroll for any future internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
