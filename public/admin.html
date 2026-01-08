@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VendorFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-gray-900 text-white py-4 px-6 shadow-lg">
+            <div class="max-w-7xl mx-auto flex justify-between items-center">
+                <h1 class="text-2xl font-bold">VendorFlow Admin</h1>
+                <div class="flex items-center gap-4">
+                    <button onclick="exportCSV()" class="bg-emerald-500 hover:bg-emerald-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+                        Export to CSV
+                    </button>
+                    <button onclick="loadVendors()" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold transition-colors">
+                        Refresh
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-8 px-6">
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="text-sm text-gray-600 mb-1">Total Vendors</div>
+                    <div id="totalCount" class="text-3xl font-bold text-gray-900">0</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="text-sm text-gray-600 mb-1">Pending</div>
+                    <div id="pendingCount" class="text-3xl font-bold text-yellow-600">0</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="text-sm text-gray-600 mb-1">Approved</div>
+                    <div id="approvedCount" class="text-3xl font-bold text-emerald-600">0</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="text-sm text-gray-600 mb-1">This Week</div>
+                    <div id="weekCount" class="text-3xl font-bold text-blue-600">0</div>
+                </div>
+            </div>
+
+            <!-- Vendors Table -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h2 class="text-xl font-semibold text-gray-900">All Vendors</h2>
+                </div>
+                
+                <div id="loadingMessage" class="p-8 text-center text-gray-600">
+                    Loading vendors...
+                </div>
+                
+                <div id="vendorsTable" class="hidden overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Phone</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Submitted</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vendorsBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Vendors will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="emptyMessage" class="hidden p-8 text-center text-gray-600">
+                    No vendors yet. Share the vendor form to get started!
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Vendor Detail Modal -->
+    <div id="vendorModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+                <h3 class="text-2xl font-bold text-gray-900">Vendor Details</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl font-bold">&times;</button>
+            </div>
+            <div id="vendorDetails" class="p-6">
+                <!-- Vendor details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allVendors = [];
+        let currentAuth = '';
+
+        // Load vendors on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadVendors();
+        });
+
+        async function loadVendors() {
+            try {
+                const response = await fetch('/api/admin/vendors');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch vendors');
+                }
+                
+                const data = await response.json();
+                allVendors = data.vendors;
+                
+                displayVendors();
+                updateStats();
+                
+            } catch (error) {
+                console.error('Error loading vendors:', error);
+                document.getElementById('loadingMessage').textContent = 'Error loading vendors. Please refresh the page.';
+            }
+        }
+
+        function displayVendors() {
+            const tbody = document.getElementById('vendorsBody');
+            const loadingMessage = document.getElementById('loadingMessage');
+            const vendorsTable = document.getElementById('vendorsTable');
+            const emptyMessage = document.getElementById('emptyMessage');
+            
+            loadingMessage.classList.add('hidden');
+            
+            if (allVendors.length === 0) {
+                vendorsTable.classList.add('hidden');
+                emptyMessage.classList.remove('hidden');
+                return;
+            }
+            
+            vendorsTable.classList.remove('hidden');
+            emptyMessage.classList.add('hidden');
+            
+            tbody.innerHTML = allVendors.map(vendor => `
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${vendor.id}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${vendor.company_name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${vendor.email || '-'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">${vendor.phone || '-'}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${getStatusBadge(vendor.status)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                        ${formatDate(vendor.submitted_at)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm space-x-2">
+                        <button onclick="viewVendor(${vendor.id})" class="text-blue-600 hover:text-blue-800 font-medium">
+                            View
+                        </button>
+                        ${vendor.status !== 'approved' ? `
+                            <button onclick="approveVendor(${vendor.id})" class="text-emerald-600 hover:text-emerald-800 font-medium">
+                                Approve
+                            </button>
+                        ` : ''}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function getStatusBadge(status) {
+            const colors = {
+                'pending': 'bg-yellow-100 text-yellow-800',
+                'approved': 'bg-emerald-100 text-emerald-800',
+                'rejected': 'bg-red-100 text-red-800'
+            };
+            const color = colors[status] || 'bg-gray-100 text-gray-800';
+            return `<span class="px-2 py-1 text-xs font-semibold rounded-full ${color}">${status.toUpperCase()}</span>`;
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+        }
+
+        function updateStats() {
+            const total = allVendors.length;
+            const pending = allVendors.filter(v => v.status === 'pending').length;
+            const approved = allVendors.filter(v => v.status === 'approved').length;
+            
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const thisWeek = allVendors.filter(v => new Date(v.created_at) > oneWeekAgo).length;
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('pendingCount').textContent = pending;
+            document.getElementById('approvedCount').textContent = approved;
+            document.getElementById('weekCount').textContent = thisWeek;
+        }
+
+        async function viewVendor(id) {
+            try {
+                const response = await fetch(`/api/admin/vendors/${id}`);
+                const data = await response.json();
+                const vendor = data.vendor;
+                
+                const details = `
+                    <div class="space-y-6">
+                        <!-- Status and Actions -->
+                        <div class="flex justify-between items-center pb-4 border-b">
+                            <div>
+                                ${getStatusBadge(vendor.status)}
+                            </div>
+                            ${vendor.status !== 'approved' ? `
+                                <button onclick="approveVendor(${vendor.id})" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors">
+                                    Approve Vendor
+                                </button>
+                            ` : `
+                                <div class="text-emerald-600 font-semibold">✓ Approved</div>
+                            `}
+                        </div>
+
+                        <!-- Company Information -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Company Information</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div><span class="font-medium">Company Name:</span> ${vendor.company_name}</div>
+                                <div><span class="font-medium">DBA:</span> ${vendor.dba || '-'}</div>
+                                <div class="col-span-2"><span class="font-medium">Address:</span> ${vendor.address}, ${vendor.city}, ${vendor.state} ${vendor.zip}</div>
+                                <div><span class="font-medium">Phone:</span> ${vendor.phone}</div>
+                                <div><span class="font-medium">Email:</span> ${vendor.email}</div>
+                                <div><span class="font-medium">Website:</span> ${vendor.website || '-'}</div>
+                                <div><span class="font-medium">Business Type:</span> ${vendor.business_type}</div>
+                            </div>
+                        </div>
+
+                        <!-- Tax Information -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Tax Information</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div><span class="font-medium">EIN:</span> ${vendor.ein}</div>
+                                <div><span class="font-medium">Tax Classification:</span> ${vendor.tax_classification}</div>
+                                <div class="col-span-2">
+                                    <span class="font-medium">W-9 Document:</span> 
+                                    ${vendor.w9_filename ? `<span class="text-blue-600">${vendor.w9_filename}</span>` : '-'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Banking Information -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Banking Information</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div><span class="font-medium">Bank Name:</span> ${vendor.bank_name}</div>
+                                <div><span class="font-medium">Account Holder:</span> ${vendor.account_holder}</div>
+                                <div><span class="font-medium">Routing Number:</span> ${vendor.routing_number}</div>
+                                <div><span class="font-medium">Account Number:</span> ${vendor.account_number}</div>
+                                <div><span class="font-medium">Account Type:</span> ${vendor.account_type}</div>
+                            </div>
+                        </div>
+
+                        <!-- Insurance Information -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Insurance Information</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div><span class="font-medium">Policy Number:</span> ${vendor.insurance_policy_number}</div>
+                                <div><span class="font-medium">Expiration:</span> ${vendor.insurance_expiration}</div>
+                                <div><span class="font-medium">Coverage Amount:</span> $${Number(vendor.insurance_coverage_amount).toLocaleString()}</div>
+                                <div class="col-span-2">
+                                    <span class="font-medium">Certificate:</span> 
+                                    ${vendor.insurance_certificate_filename ? `<span class="text-blue-600">${vendor.insurance_certificate_filename}</span>` : '-'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Contact Information</h4>
+                            <div class="space-y-4 text-sm">
+                                <div>
+                                    <div class="font-medium mb-2">Primary Contact</div>
+                                    <div class="grid grid-cols-3 gap-4 pl-4">
+                                        <div>${vendor.primary_contact_name}</div>
+                                        <div>${vendor.primary_contact_email}</div>
+                                        <div>${vendor.primary_contact_phone}</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-2">AP Contact</div>
+                                    <div class="grid grid-cols-3 gap-4 pl-4">
+                                        <div>${vendor.ap_contact_name || '-'}</div>
+                                        <div>${vendor.ap_contact_email || '-'}</div>
+                                        <div>${vendor.ap_contact_phone || '-'}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timestamps -->
+                        <div class="pt-4 border-t text-sm text-gray-600">
+                            <div>Submitted: ${formatDate(vendor.submitted_at)}</div>
+                            ${vendor.approved_at ? `<div>Approved: ${formatDate(vendor.approved_at)} by ${vendor.approved_by}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('vendorDetails').innerHTML = details;
+                document.getElementById('vendorModal').classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Error loading vendor details:', error);
+                alert('Error loading vendor details');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('vendorModal').classList.add('hidden');
+        }
+
+        async function approveVendor(id) {
+            if (!confirm('Are you sure you want to approve this vendor?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/admin/vendors/${id}/approve`, {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('✓ Vendor approved successfully!');
+                    closeModal();
+                    loadVendors();
+                } else {
+                    throw new Error(data.message || 'Failed to approve vendor');
+                }
+                
+            } catch (error) {
+                console.error('Error approving vendor:', error);
+                alert('Error approving vendor: ' + error.message);
+            }
+        }
+
+        function exportCSV() {
+            // Create a hidden link and trigger download
+            const link = document.createElement('a');
+            link.href = '/api/admin/export/csv';
+            link.download = `vendors-${Date.now()}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('vendorModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
