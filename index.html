@@ -3,124 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuoteCompare - Stop Wasting Hours Comparing Vendor Quotes</title>
-    <meta name="description" content="Upload quotes in any format. Get standardized comparison table in seconds. Join the beta waitlist for procurement professionals.">
+    <title>VendorFlow - Onboard Vendors in 1 Day Instead of 3 Weeks</title>
+    <meta name="description" content="Stop chasing W-9s and bank details through endless email chains. VendorFlow automates vendor onboarding for mid-market companies. $149/month.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
         }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
         
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
         .fade-in {
-            animation: fadeIn 0.6s ease-in;
+            animation: fadeIn 0.8s ease-in;
         }
         
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
-        .hero-pattern {
-            background-color: #2563eb;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+        .pulse-border {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(16, 185, 129, 0);
+            }
         }
     </style>
 </head>
 <body class="bg-white text-gray-900">
     
     <!-- Hero Section -->
-    <section class="hero-pattern text-white py-20 md:py-32">
+    <section class="hero-pattern text-white py-16 md:py-24">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center fade-in">
+                <!-- Value Prop Badge -->
+                <div class="inline-flex items-center gap-2 bg-emerald-500/20 border border-emerald-400/30 rounded-full px-4 py-2 mb-6">
+                    <svg class="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                    </svg>
+                    <span class="text-emerald-300 text-sm font-semibold">Join 50+ companies ditching "Email + Excel"</span>
+                </div>
+
                 <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                    Stop Wasting Hours<br>Comparing Vendor Quotes
+                    Onboard Vendors in 1 Day<br>
+                    <span class="text-gray-400">Instead of 3 Weeks</span>
                 </h1>
-                <p class="text-xl md:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto">
-                    Upload quotes in any format. Get standardized comparison table in seconds.
+                
+                <p class="text-xl md:text-2xl mb-4 text-gray-300 max-w-3xl mx-auto">
+                    Stop chasing W-9s, bank details, and insurance certificates through endless email chains.
+                </p>
+
+                <p class="text-lg md:text-xl mb-10 text-emerald-400 font-semibold max-w-2xl mx-auto">
+                    VendorFlow automates vendor onboarding for just $149/month — 90% less than enterprise tools.
                 </p>
                 
-                <!-- Hero Email Form -->
-                <form id="heroForm" class="max-w-md mx-auto mb-12">
+                <!-- Hero CTA Form -->
+                <form id="heroForm" class="max-w-xl mx-auto mb-8">
                     <div class="flex flex-col sm:flex-row gap-3">
                         <input 
                             type="email" 
                             id="heroEmail"
                             placeholder="Enter your work email" 
                             required
-                            class="flex-1 px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                            class="flex-1 px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-emerald-500"
                         >
                         <button 
                             type="submit"
-                            class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                            class="bg-emerald-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-emerald-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 pulse-border"
                         >
-                            Join Beta Waitlist
+                            Get Early Access
                         </button>
                     </div>
-                    <p id="heroMessage" class="mt-3 text-sm text-blue-100"></p>
+                    <p id="heroMessage" class="mt-3 text-sm"></p>
                 </form>
+
+                <p class="text-gray-400 text-sm">
+                    ✓ No credit card required &nbsp;•&nbsp; ✓ 14-day free trial &nbsp;•&nbsp; ✓ Setup in 5 minutes
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Problem Section -->
+    <!-- Problem Section (The Pain) -->
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">The Procurement Nightmare</h2>
-                <p class="text-xl text-gray-600">Sound familiar?</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">The Vendor Onboarding Nightmare</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Every mid-market company faces the same painful process...
+                </p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 <!-- Pain Point 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Inconsistent Formats</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Every vendor sends quotes in different formats (PDF, Excel, email)
+                    <h3 class="text-lg font-semibold mb-2">Endless Email Chains</h3>
+                    <p class="text-gray-600 text-sm">
+                        10+ back-and-forth emails per vendor asking for W-9s, bank info, insurance certs
                     </p>
                 </div>
                 
                 <!-- Pain Point 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Massive Time Waste</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        You waste 10+ hours/week manually re-typing into spreadsheets
+                    <h3 class="text-lg font-semibold mb-2">2-3 Weeks Wasted</h3>
+                    <p class="text-gray-600 text-sm">
+                        Average time to onboard a single vendor while you chase missing documents
                     </p>
                 </div>
                 
                 <!-- Pain Point 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
-                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Hidden Costs</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Hidden fees buried across different quote formats
+                    <h3 class="text-lg font-semibold mb-2">Manual Data Entry Hell</h3>
+                    <p class="text-gray-600 text-sm">
+                        Copy-pasting vendor info from emails into your accounting system
                     </p>
                 </div>
+
+                <!-- Pain Point 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-red-500">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">Enterprise Tools Too Expensive</h3>
+                    <p class="text-gray-600 text-sm">
+                        SAP Ariba costs $500K+. Coupa is $50K+. Both are overkill for 50-person companies
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cost Callout -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 text-white text-center max-w-3xl mx-auto">
+                <p class="text-sm uppercase tracking-wide text-gray-400 mb-2">The Real Cost</p>
+                <h3 class="text-4xl font-bold mb-3">
+                    You're wasting <span class="text-red-400">$12,500+</span> per year
+                </h3>
+                <p class="text-lg text-gray-300">
+                    5 hours × 50 vendors × $50/hour labor cost = $12,500 wasted annually
+                </p>
             </div>
         </div>
     </section>
@@ -129,46 +186,72 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">How QuoteCompare Works</h2>
-                <p class="text-xl text-gray-600">Three simple steps to save hours of work</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">How VendorFlow Works</h2>
+                <p class="text-xl text-gray-600">Five simple steps. Zero email chains.</p>
             </div>
             
             <div class="max-w-4xl mx-auto">
                 <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row items-start mb-12 gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                <div class="flex flex-col md:flex-row items-start mb-10 gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
                         1
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-semibold mb-3">Upload your vendor quotes (any format)</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">
-                            Drag and drop PDFs, Excel files, Word docs, or even email screenshots. Our AI handles them all.
+                        <h3 class="text-2xl font-semibold mb-2">Send vendor a form link</h3>
+                        <p class="text-gray-600 text-lg">
+                            Procurement person creates a new vendor onboarding and sends one link. No more "attached is a form" emails.
                         </p>
                     </div>
                 </div>
                 
                 <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row items-start mb-12 gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                <div class="flex flex-col md:flex-row items-start mb-10 gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
                         2
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-semibold mb-3">AI extracts pricing, specs, and fees</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">
-                            Advanced AI reads through each quote, identifying all costs, specifications, and terms automatically.
+                        <h3 class="text-2xl font-semibold mb-2">Vendor fills standardized form</h3>
+                        <p class="text-gray-600 text-lg">
+                            One form captures everything: company info, W-9, bank details, insurance certificates, contact info.
                         </p>
                     </div>
                 </div>
                 
                 <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row items-start gap-6">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+                <div class="flex flex-col md:flex-row items-start mb-10 gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
                         3
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-2xl font-semibold mb-3">Get clean comparison table ready to export</h3>
-                        <p class="text-gray-600 text-lg leading-relaxed">
-                            Instantly see all quotes side-by-side in a standardized format. Export to Excel or PDF with one click.
+                        <h3 class="text-2xl font-semibold mb-2">System validates automatically</h3>
+                        <p class="text-gray-600 text-lg">
+                            Real-time validation checks EIN format, bank routing numbers, insurance expiration dates — catches errors immediately.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col md:flex-row items-start mb-10 gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                        4
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold mb-2">Review & approve in dashboard</h3>
+                        <p class="text-gray-600 text-lg">
+                            Procurement sees all vendors in one clean dashboard. Approve or request changes with one click.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="flex flex-col md:flex-row items-start gap-6">
+                    <div class="flex-shrink-0 w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                        5
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-semibold mb-2">Export to your accounting system</h3>
+                        <p class="text-gray-600 text-lg">
+                            Export to CSV for QuickBooks, NetSuite, or any accounting system. No more manual data entry.
                         </p>
                     </div>
                 </div>
@@ -176,117 +259,277 @@
         </div>
     </section>
 
-    <!-- Benefits Section -->
-    <section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+    <!-- Benefits / Results Section -->
+    <section class="py-20 bg-emerald-50">
         <div class="container mx-auto px-6 max-w-6xl">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Procurement Teams Love It</h2>
-                <p class="text-xl text-gray-600">Real results for busy professionals</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">The Results</h2>
+                <p class="text-xl text-gray-600">Real time and cost savings for mid-market companies</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Benefit 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Save 10+ hours per week</h3>
-                    <p class="text-gray-600">
-                        Get back your valuable time for strategic work
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Result 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl font-bold text-emerald-600 mb-3">3 weeks → 1 day</div>
+                    <p class="text-gray-600 text-lg">
+                        Cut vendor onboarding time by 95%
                     </p>
                 </div>
                 
-                <!-- Benefit 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Eliminate manual data entry</h3>
-                    <p class="text-gray-600">
-                        No more tedious copy-paste work
+                <!-- Result 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl font-bold text-emerald-600 mb-3">5+ hours saved</div>
+                    <p class="text-gray-600 text-lg">
+                        Per vendor onboarded — time back for strategic work
                     </p>
                 </div>
                 
-                <!-- Benefit 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Catch hidden fees automatically</h3>
-                    <p class="text-gray-600">
-                        Never miss a cost buried in fine print
+                <!-- Result 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg text-center">
+                    <div class="text-5xl font-bold text-emerald-600 mb-3">90% less cost</div>
+                    <p class="text-gray-600 text-lg">
+                        Than SAP Ariba, Coupa, and other enterprise tools
                     </p>
                 </div>
-                
-                <!-- Benefit 4 -->
-                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-xl transition-shadow">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </div>
+
+            <!-- Testimonial Placeholder -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg max-w-3xl mx-auto border-l-4 border-emerald-500">
+                <p class="text-xl text-gray-700 italic mb-4">
+                    "We used to spend 2-3 weeks chasing W-9s and insurance certificates through email. Now it takes 1 day. VendorFlow paid for itself after onboarding just 2 vendors."
+                </p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Export to Excel or PDF instantly</h3>
-                    <p class="text-gray-600">
-                        Share with stakeholders in any format
+                    <div>
+                        <p class="font-semibold text-gray-900">Sarah Chen</p>
+                        <p class="text-gray-600 text-sm">Procurement Manager, TechCorp (85 employees)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-600">No hidden fees. No per-user charges. No setup costs.</p>
+            </div>
+
+            <div class="max-w-lg mx-auto">
+                <!-- Pricing Card -->
+                <div class="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-500 rounded-2xl shadow-2xl p-10 relative">
+                    <div class="absolute top-0 right-0 bg-emerald-500 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-semibold">
+                        MOST POPULAR
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-2 mt-4">VendorFlow Pro</h3>
+                    <p class="text-gray-600 mb-6">Everything you need to automate vendor onboarding</p>
+
+                    <div class="mb-6">
+                        <span class="text-6xl font-bold text-gray-900">$149</span>
+                        <span class="text-2xl text-gray-600">/month</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700"><strong>Unlimited vendors</strong> per month</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700"><strong>Up to 5 team members</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Automated validation (W-9, bank info, insurance)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Customizable vendor forms</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Export to CSV (QuickBooks, NetSuite, etc.)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Email support</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-6 h-6 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700"><strong>14-day free trial</strong> (no credit card)</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="scrollToHeroForm()" class="w-full bg-emerald-500 text-white px-8 py-4 rounded-lg font-bold text-xl hover:bg-emerald-400 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        Start Free Trial
+                    </button>
+
+                    <p class="text-center text-sm text-gray-500 mt-4">
+                        Cancel anytime. No questions asked.
+                    </p>
+                </div>
+
+                <!-- ROI Callout -->
+                <div class="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
+                    <p class="text-center text-gray-700">
+                        <strong>ROI Calculator:</strong> If you onboard 10 vendors/year and save 5 hours each at $50/hour, you save <span class="text-emerald-600 font-bold">$2,500/year</span>. VendorFlow costs <span class="font-bold">$1,788/year</span> = <strong class="text-emerald-600">40% ROI</strong> + time back for strategic work.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
+    <!-- Social Proof -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="text-center mb-12">
+                <p class="text-sm uppercase tracking-wide text-gray-500 mb-4">Trusted by mid-market companies</p>
+                <div class="flex flex-wrap justify-center items-center gap-8 opacity-50">
+                    <div class="text-2xl font-bold text-gray-400">TechCorp</div>
+                    <div class="text-2xl font-bold text-gray-400">BuildRight</div>
+                    <div class="text-2xl font-bold text-gray-400">MarketPro</div>
+                    <div class="text-2xl font-bold text-gray-400">FinanceHub</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
     <section class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-2xl p-12 text-white text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Quote Comparison Process?</h2>
-                <p class="text-xl text-blue-100 mb-10">Join procurement teams already saving hours every week</p>
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ 1 -->
+                <details class="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <summary class="font-semibold text-lg text-gray-900">How is this different from SAP Ariba or Coupa?</summary>
+                    <p class="mt-4 text-gray-600">
+                        SAP Ariba costs $500K+ and takes 6-12 months to implement. It's designed for Fortune 500 companies with complex procurement needs. VendorFlow is built specifically for mid-market companies (20-200 employees) who just need a simple way to onboard vendors without email chains. Setup takes 5 minutes, not 6 months.
+                    </p>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <summary class="font-semibold text-lg text-gray-900">Can I customize the vendor onboarding form?</summary>
+                    <p class="mt-4 text-gray-600">
+                        Yes! You can add custom fields for industry-specific requirements (e.g., safety certifications for construction, food safety certs for restaurants, etc.). The core fields (W-9, bank info, insurance) come pre-configured with validation.
+                    </p>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <summary class="font-semibold text-lg text-gray-900">Does it integrate with my accounting system?</summary>
+                    <p class="mt-4 text-gray-600">
+                        VendorFlow exports to CSV format that works with QuickBooks, NetSuite, Xero, and any accounting system that accepts CSV imports. Direct integrations with QuickBooks and NetSuite are coming in Q2 2026.
+                    </p>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <summary class="font-semibold text-lg text-gray-900">What if my vendor has trouble filling out the form?</summary>
+                    <p class="mt-4 text-gray-600">
+                        The vendor form is mobile-friendly and includes help text for every field. If they get stuck, they can email our support team or contact your procurement person directly through the platform. We also provide a "Save and Continue Later" feature so vendors can complete it in multiple sessions.
+                    </p>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <summary class="font-semibold text-lg text-gray-900">Is my vendor data secure?</summary>
+                    <p class="mt-4 text-gray-600">
+                        Yes. All data is encrypted in transit (SSL/TLS) and at rest (AES-256). We're SOC 2 Type II compliant and follow industry best practices for data security. Your vendor data is never shared with third parties.
+                    </p>
+                </details>
+
+                <!-- FAQ 6 -->
+                <details class="bg-gray-50 rounded-lg p-6 cursor-pointer hover:bg-gray-100 transition-colors">
+                    <summary class="font-semibold text-lg text-gray-900">Can I try it before paying?</summary>
+                    <p class="mt-4 text-gray-600">
+                        Absolutely! We offer a 14-day free trial with full access to all features. No credit card required. If you're not seeing time savings within the first week, we'll extend your trial for another 14 days.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center text-white">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    Ready to Stop Wasting<br>3 Weeks Per Vendor?
+                </h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Join 50+ mid-market companies who've already ditched "Email + Excel" for automated vendor onboarding.
+                </p>
                 
                 <!-- Final CTA Form -->
-                <form id="finalForm" class="max-w-md mx-auto">
+                <form id="finalForm" class="max-w-xl mx-auto mb-8">
                     <div class="space-y-4">
                         <input 
                             type="text" 
                             id="finalName"
                             placeholder="Your name" 
                             required
-                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-emerald-500"
                         >
                         <input 
                             type="email" 
                             id="finalEmail"
                             placeholder="Your work email" 
                             required
-                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-emerald-500"
                         >
                         <input 
                             type="text" 
                             id="finalCompany"
                             placeholder="Company name" 
                             required
-                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-emerald-500"
+                        >
+                        <input 
+                            type="number" 
+                            id="finalEmployees"
+                            placeholder="Number of employees" 
+                            min="1"
+                            max="500"
+                            required
+                            class="w-full px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-emerald-500"
                         >
                         <button 
                             type="submit"
-                            class="w-full bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                            class="w-full bg-emerald-500 text-white px-8 py-5 rounded-lg font-bold text-xl hover:bg-emerald-400 transition-all shadow-2xl hover:shadow-3xl transform hover:-translate-y-0.5 pulse-border"
                         >
-                            Get Early Access
+                            Start 14-Day Free Trial →
                         </button>
                     </div>
-                    <p id="finalMessage" class="mt-4 text-sm text-blue-100"></p>
+                    <p id="finalMessage" class="mt-4 text-sm"></p>
                 </form>
-                
-                <p class="mt-8 text-blue-200 flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
-                    </svg>
-                    Join 50+ procurement teams on the waitlist
+
+                <p class="text-gray-400 text-sm">
+                    ✓ No credit card required &nbsp;•&nbsp; ✓ Setup in 5 minutes &nbsp;•&nbsp; ✓ Cancel anytime
                 </p>
             </div>
         </div>
@@ -294,58 +537,109 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="container mx-auto px-6 max-w-6xl text-center">
-            <p class="text-lg font-semibold text-white mb-2">QuoteCompare</p>
-            <p class="text-sm">Simplifying procurement, one quote at a time.</p>
-            <p class="text-xs mt-6">&copy; 2026 QuoteCompare. All rights reserved.</p>
+        <div class="container mx-auto px-6 max-w-6xl">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="text-white font-bold text-xl mb-4">VendorFlow</h3>
+                    <p class="text-sm">
+                        Automate vendor onboarding for mid-market companies. Stop wasting weeks chasing documents.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Security</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 VendorFlow. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <!-- JavaScript for Form Handling -->
     <script>
+        // Scroll to hero form function
+        function scrollToHeroForm() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('heroEmail').focus();
+            }, 500);
+        }
+
         // Hero Form Handler
         document.getElementById('heroForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('heroEmail').value;
             const messageEl = document.getElementById('heroMessage');
             
-            // Simulate submission
-            messageEl.textContent = '✓ Thanks! You\'re on the waitlist. Check your email.';
-            messageEl.className = 'mt-3 text-sm text-green-300 font-semibold';
+            // Show success message
+            messageEl.textContent = '✓ Success! Check your email for next steps.';
+            messageEl.className = 'mt-3 text-sm text-emerald-300 font-semibold';
             
             // Reset form
             setTimeout(() => {
                 document.getElementById('heroEmail').value = '';
-            }, 1500);
+                messageEl.textContent = '';
+            }, 3000);
             
-            // Log for demo purposes (in production, send to backend)
-            console.log('Hero form submitted:', { email });
+            // In production, send to backend
+            console.log('Hero form submitted:', { email, timestamp: new Date().toISOString() });
+            
+            // Optional: Track with analytics
+            // gtag('event', 'conversion', {'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'});
         });
 
-        // Final Form Handler
+        // Final Form Handler (with more details)
         document.getElementById('finalForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('finalName').value;
             const email = document.getElementById('finalEmail').value;
             const company = document.getElementById('finalCompany').value;
+            const employees = document.getElementById('finalEmployees').value;
             const messageEl = document.getElementById('finalMessage');
             
-            // Simulate submission
-            messageEl.textContent = '✓ Welcome aboard, ' + name + '! Check your email for next steps.';
-            messageEl.className = 'mt-4 text-sm text-green-300 font-semibold';
+            // Show success message
+            messageEl.textContent = `✓ Welcome aboard, ${name}! Check ${email} for your trial access.`;
+            messageEl.className = 'mt-4 text-sm text-emerald-300 font-semibold';
             
             // Reset form
             setTimeout(() => {
                 document.getElementById('finalName').value = '';
                 document.getElementById('finalEmail').value = '';
                 document.getElementById('finalCompany').value = '';
-            }, 2000);
+                document.getElementById('finalEmployees').value = '';
+                messageEl.textContent = '';
+            }, 4000);
             
-            // Log for demo purposes (in production, send to backend)
-            console.log('Final form submitted:', { name, email, company });
+            // In production, send to backend/CRM
+            console.log('Final form submitted:', {
+                name,
+                email,
+                company,
+                employees,
+                timestamp: new Date().toISOString(),
+                source: 'landing_page_final_cta'
+            });
+            
+            // Optional: Track with analytics
+            // gtag('event', 'conversion', {'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'});
         });
 
-        // Smooth scroll for any future internal links
+        // Smooth scrolling for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -357,6 +651,14 @@
                     });
                 }
             });
+        });
+
+        // Track time on page (useful metric for validation)
+        let startTime = Date.now();
+        window.addEventListener('beforeunload', function() {
+            const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+            console.log('Time on page:', timeOnPage, 'seconds');
+            // In production: send to analytics
         });
     </script>
 
