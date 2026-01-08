@@ -10,7 +10,7 @@ Mid-market companies (20-200 employees) waste 2-3 weeks onboarding each new vend
 - Lost documents and compliance risks
 - $12,500+ wasted annually in labor costs
 
-Enterprise tools like SAP Ariba ($500K+) and Coupa are too expensive and complex for mid-market companies.
+Enterprise tools ($50K-500K+) are too expensive and complex for mid-market companies.
 
 ## ✅ The Solution
 
@@ -42,7 +42,7 @@ This landing page is designed to validate demand before building the full produc
 - **$149/month** ($1,788/year)
 - Unlimited vendors, up to 5 team members
 - 14-day free trial
-- 90% cheaper than SAP Ariba
+- 90% cheaper than enterprise tools
 
 ### Path to $1M ARR
 Need ~560 customers at $149/month to hit $1M annual recurring revenue.
